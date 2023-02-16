@@ -18,5 +18,5 @@ jobs:
       with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ secrets.AZURE_RGNAME }}
-          template: ./ARM-Templates/container-webapp-template.json
+          template: ../../ARM-Templates/container-webapp-template.json
           parameters: webAppName=pbgithackapp
