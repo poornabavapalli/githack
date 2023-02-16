@@ -6,9 +6,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # Checkout code
+    - uses: actions/checkout@main
+    
       # Log into Azure
     - name: 'Az CLI login'
-      uses: Azure/login@v1.4.6
+      uses: Azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
