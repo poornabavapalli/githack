@@ -1,0 +1,22 @@
+name: Deploy to App
+on: 
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Log into Azure
+    - name: 'Az CLI login'
+      uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      # Deploy ARM template    
+    - name: Deploy Azure Resource Manager (ARM) Template
+      uses: Azure/arm-deploy@v1.0.9
+      with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ secrets.AZURE_RGNAME }}
+          template: ./container-webapp-template.json
+          parameters: webAppName=pbgithackapp
